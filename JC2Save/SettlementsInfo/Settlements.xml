@@ -167,17 +167,17 @@
   <settlement id="dcs73" index="380" type="comm_station" textkey="set_dcs_txt_48" totalcount="4" text="Tanah Raya Timur Lambda" x="28419.46" y="15167.23" />
   <settlement id="dcs04" index="388" type="comm_station" textkey="set_dcs_txt_02" totalcount="4" text="Banjaran Berawan Besar Beta" x="14813.945" y="4672.4" />
   <settlement id="dcs49" index="404" type="comm_station" textkey="set_dcs_txt_25" totalcount="4" text="Gurun Lautan Lama Delta" x="7290.49" y="23310.042" />
-  <settlement id="17x02" index="68" type="oilrig" textkey="set_mil_txt_101" totalcount="26" text="Pelantar Gas Pandak Panay" x="8888.43" y="1323.32" />
-  <settlement id="62x23" index="120" type="oilrig" textkey="set_mil_txt_110" totalcount="26" text="Pelantar Gas Telok Beting Timur" x="31909.08" y="12078.917" />
-  <settlement id="61x14" index="150" type="oilrig" textkey="set_mil_txt_109" totalcount="26" text="Pelantar Gas Tiang Geneng" x="31417.91" y="7313.127" />
-  <settlement id="f3t12" index="154" type="oilrig" textkey="set_civ_txt_136" totalcount="26" text="Pelantar Minyak Gerudi Besar" x="797.469999999999" y="22490.84" />
-  <settlement id="22x29" index="234" type="oilrig" textkey="set_mil_txt_103" totalcount="26" text="Pelantar Gas Telok Panau" x="11480.303" y="14983.934" />
-  <settlement id="22x01" index="309" type="oilrig" textkey="set_mil_txt_102" totalcount="26" text="Pelantar Gas Panau Utara" x="11593.235" y="1026.42" />
-  <settlement id="02x45" index="310" type="oilrig" textkey="set_mil_txt_100" totalcount="26" text="Pelantar Gas Panau Barat" x="1149.15" y="23299.199" />
-  <settlement id="58x05" index="342" type="oilrig" textkey="set_mil_txt_106" totalcount="26" text="Pelantar Gas Ledakan Besar" x="29794.08" y="2898.52" />
-  <settlement id="51x04" index="264" type="oilrig" textkey="set_mil_txt_104" totalcount="26" text="Pelantar Gas Kepulauan Pelaut" x="26381.194" y="2196.53" />
-  <settlement id="57x41" index="332" type="oilrig" textkey="set_mil_txt_105" totalcount="26" text="Pelantar Gas Panau Timur" x="29480.18" y="21255.582" />
-  <settlement id="58x48" index="337" type="oilrig" textkey="set_mil_txt_108" totalcount="26" text="Pelantar Gas Panau Selatan" x="29850.77" y="24753.213" />
+  <settlement id="17x02" index="68" type="offshore_rig" textkey="set_mil_txt_101" totalcount="26" text="Pelantar Gas Pandak Panay" x="8888.43" y="1323.32" />
+  <settlement id="62x23" index="120" type="offshore_rig" textkey="set_mil_txt_110" totalcount="26" text="Pelantar Gas Telok Beting Timur" x="31909.08" y="12078.917" />
+  <settlement id="61x14" index="150" type="offshore_rig" textkey="set_mil_txt_109" totalcount="26" text="Pelantar Gas Tiang Geneng" x="31417.91" y="7313.127" />
+  <settlement id="f3t12" index="154" type="offshore_rig" textkey="set_civ_txt_136" totalcount="26" text="Pelantar Minyak Gerudi Besar" x="797.469999999999" y="22490.84" />
+  <settlement id="22x29" index="234" type="offshore_rig" textkey="set_mil_txt_103" totalcount="26" text="Pelantar Gas Telok Panau" x="11480.303" y="14983.934" />
+  <settlement id="22x01" index="309" type="offshore_rig" textkey="set_mil_txt_102" totalcount="26" text="Pelantar Gas Panau Utara" x="11593.235" y="1026.42" />
+  <settlement id="02x45" index="310" type="offshore_rig" textkey="set_mil_txt_100" totalcount="26" text="Pelantar Gas Panau Barat" x="1149.15" y="23299.199" />
+  <settlement id="58x05" index="342" type="offshore_rig" textkey="set_mil_txt_106" totalcount="26" text="Pelantar Gas Ledakan Besar" x="29794.08" y="2898.52" />
+  <settlement id="51x04" index="264" type="offshore_rig" textkey="set_mil_txt_104" totalcount="26" text="Pelantar Gas Kepulauan Pelaut" x="26381.194" y="2196.53" />
+  <settlement id="57x41" index="332" type="offshore_rig" textkey="set_mil_txt_105" totalcount="26" text="Pelantar Gas Panau Timur" x="29480.18" y="21255.582" />
+  <settlement id="58x48" index="337" type="offshore_rig" textkey="set_mil_txt_108" totalcount="26" text="Pelantar Gas Panau Selatan" x="29850.77" y="24753.213" />
   <settlement id="31x08" index="74" type="commercial" textkey="set_civ_txt_173" totalcount="12" text="Bandar Baru Nipah" x="15884.8771" y="4287.64" />
   <settlement id="city.c" index="77" type="commercial" textkey="set_city_txt_01" totalcount="110" text="Panau City - Financial District" x="6076.84" y="13335.625" />
   <settlement id="33x26" index="99" type="commercial" textkey="set_civ_txt_212" totalcount="15" text="Pekan Teluk Tengah" x="17070.2754" y="13788.688" />

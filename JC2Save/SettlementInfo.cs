@@ -20,7 +20,7 @@ namespace JC2.Save
         airport,
         seaport,
         comm_station,
-        oilrig,
+        offshore_rig,
         commercial,
         civilian,
         stronghold

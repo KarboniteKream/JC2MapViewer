@@ -124,6 +124,7 @@
     </Content>
     <Content Include="SettlementsInfo\Settlements.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

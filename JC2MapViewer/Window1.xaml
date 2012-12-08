@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:JC2MapViewer"
     xmlns:bruTileWindows="clr-namespace:BruTile.UI.Windows;assembly=BruTile"
-    Title="JC2MapViewer">
+    Title="JC2MapViewer 0.3.1">
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
