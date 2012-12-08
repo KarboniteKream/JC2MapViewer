@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C95521B-4205-42A8-9822-D0638BC2C25A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JC2.Save</RootNamespace>
+    <AssemblyName>JC2.Save</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigEndianBinaryReader.cs" />
+    <Compile Include="EndianessSwitchableBitConverter.cs" />
+    <Compile Include="JC2\Save\Chunk_CHeatSpawnManager.cs" />
+    <Compile Include="JC2\Save\Chunk_CSpawnManager.cs" />
+    <Compile Include="JC2\Save\Chunk_HeatLevels.cs" />
+    <Compile Include="JC2\Save\Chunk_CSheldonService.cs" />
+    <Compile Include="JC2\Save\Chunk_HeatSystem.cs" />
+    <Compile Include="SavedSettlementInfo.cs" />
+    <Compile Include="SavedObjectInfo.cs" />
+    <Compile Include="SettlementInfo.cs" />
+    <Compile Include="IContainsSavedObjectInfo.cs" />
+    <Compile Include="IContainsSettlementInfo.cs" />
+    <Compile Include="SettlementInfoLookup.cs" />
+    <Compile Include="JC2\Save\Chunk_MissionSystem.cs" />
+    <Compile Include="JC2\Save\Chunk_WorldTime.cs" />
+    <Compile Include="JC2\Save\Chunk_PDADatabase.cs" />
+    <Compile Include="JC2\Save\ClassLookup.cs" />
+    <Compile Include="JC2\Save\Chunk_Settlements.cs" />
+    <Compile Include="JC2\Save\Chunk_DripfeedManager.cs" />
+    <Compile Include="JC2\Save\Chunk_Strongholds.cs" />
+    <Compile Include="JC2\Save\HashedString.cs" />
+    <Compile Include="SavedObjectInfoLookup.cs" />
+    <Compile Include="JC2\Save\ObjectReference.cs" />
+    <Compile Include="ReadOnlyDictionary.cs" />
+    <Compile Include="JC2\Save\SaveFileHeader.cs" />
+    <Compile Include="JC2\Save\Chunk_Statistics.cs" />
+    <Compile Include="JC2\Save\ParsedChunkTypeHelper.cs" />
+    <Compile Include="JC2\Save\KnownChunkAttribute.cs" />
+    <Compile Include="JC2\Save\NameLookup.cs" />
+    <Compile Include="JC2\Save\ChunkData.cs" />
+    <Compile Include="JC2\Save\ChunkDataEntry.cs" />
+    <Compile Include="JC2\Save\ChunkHeader.cs" />
+    <Compile Include="JC2\Save\Chunk_BlackmarketHook.cs" />
+    <Compile Include="JC2\Save\Chunk_TriggerSaveHandler.cs" />
+    <Compile Include="JC2\Save\Chunk_SaveBitsStorage.cs" />
+    <Compile Include="JC2\Save\Chunk_ResourceItemHandler.cs" />
+    <Compile Include="JC2\Save\IParsedChunk.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JC2\Save\SaveFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\objectids.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\stringstohash.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SavedObjectInfo\ResourceItemHandler.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SavedObjectInfo\SaveBitStorage.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SavedObjectInfo\TriggerSaveHandler.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SavedObjectInfo\SavedObjectInfo.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SettlementsInfo\Settlements.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SettlementsInfo\Settlements.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

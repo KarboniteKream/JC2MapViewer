@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruTile", "BruTile\BruTile.csproj", "{70315167-2BF1-4C7B-9184-728CAABF30D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JC2MapViewer", "JC2MapViewer\JC2MapViewer.csproj", "{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JC2.Save", "JC2Save\JC2.Save.csproj", "{1C95521B-4205-42A8-9822-D0638BC2C25A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Addins debug|Any CPU = Addins debug|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Addins debug|Any CPU.ActiveCfg = Release|Any CPU
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Addins debug|Any CPU.Build.0 = Release|Any CPU
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70315167-2BF1-4C7B-9184-728CAABF30D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Addins debug|Any CPU.ActiveCfg = Release|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Addins debug|Any CPU.Build.0 = Release|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90014F5A-11D6-4FE5-B9CF-47E810A5AF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Addins debug|Any CPU.ActiveCfg = Release|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Addins debug|Any CPU.Build.0 = Release|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C95521B-4205-42A8-9822-D0638BC2C25A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

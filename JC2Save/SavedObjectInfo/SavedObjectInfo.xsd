@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="itemlist" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- uint32 as hex (e.g. ABCD4567) -->
+  <xs:simpleType name='ID'>
+    <xs:restriction base='xs:hexBinary'>
+      <xs:length value='4' fixed='true'/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:element name="sublist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="iid" type="ID" use="required" />
+            <xs:attribute name="x" type="xs:float" use="required" />
+            <xs:attribute name="y" type="xs:float" use="required" />
+            <xs:attribute name="set" type="xs:boolean" />
+            <!-- explicit name -->
+            <xs:attribute name="itemname" type="xs:string" />
+          	<xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="sublist" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+      <!-- implicit name -->
+      <xs:attribute name="itemname" type="xs:string" />
+      <xs:attribute name="oid" type="ID" />
+      <!-- part of category path -->
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="icon" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="itemlist">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="sublist" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

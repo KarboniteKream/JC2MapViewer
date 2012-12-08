@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="settlements" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- uint32 as hex (e.g. ABCD4567) -->
+  <xs:simpleType name='ID'>
+    <xs:restriction base='xs:hexBinary'>
+      <xs:length value='4' fixed='true'/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="SettlementType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="military_base"/>
+      <xs:enumeration value="airport"/>
+      <xs:enumeration value="seaport"/>
+      <xs:enumeration value="comm_station"/>
+      <xs:enumeration value="oilrig"/>
+      <xs:enumeration value="commercial"/>
+      <xs:enumeration value="civilian"/>
+      <xs:enumeration value="stronghold"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Faction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="military"/>
+      <xs:enumeration value="ular_boys"/>
+      <xs:enumeration value="roaches"/>
+      <xs:enumeration value="reapers"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="settlements">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="settlement">
+          <xs:complexType>
+            <!-- settlement -->
+            <xs:attribute name="index" type="xs:integer" />
+            <!-- stronghold -->
+            <xs:attribute name="name" type="xs:string" />
+            
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="type" type="SettlementType" use="required" />
+            <xs:attribute name="textkey" type="xs:string" use="required" />
+            <xs:attribute name="totalcount" type="xs:integer" use="required" />
+            <xs:attribute name="text" type="xs:string" use="required" />
+            <xs:attribute name="x" type="xs:float" use="required" />
+            <xs:attribute name="y" type="xs:float" use="required" />
+
+            <xs:attribute name="faction" type="Faction" default="military" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="settlementitems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="iid" type="ID" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>        
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
