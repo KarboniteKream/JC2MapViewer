@@ -13,7 +13,7 @@ state, etc.), that is not used by the viewer, so anyone interested can use it in
 
 Instructions
 ------------
-1. Click on "Load..." and browse to %ProgramFiles%/Steam/userdata/[steam_user_id]/8190/remote.
+1. Click on "Load..." and browse to %ProgramFiles%\Steam\userdata\[steam_id]\8190\remote.
 2. Open the save file of your choice.
 3. Check item category and click "Refresh" to display missed items of that type.
 4. Click "Toggle Settlements" to display unfinished settlements (with information about completion and missed items).
