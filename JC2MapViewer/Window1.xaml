@@ -41,10 +41,11 @@
         <Border CornerRadius="8" Width="285" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8" Background="#7f000000" BorderThickness="2" BorderBrush="#ffffff" Padding="8">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <Button x:Name="button1" Click="button1_Click">Load...</Button>
+                    <Button x:Name="button1" Click="button1_Click">Load save file</Button>
                     <TreeView x:Name="itemChooser" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemsSource="{Binding Mode=OneTime}" ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
                     <Button x:Name="button2" Click="button2_Click">Refresh</Button>
-                    <ToggleButton x:Name="button3" Click="button3_Click">Toggle Settlements</ToggleButton>
+                    <Button x:Name="reloadButton" Click="reload_Click">Reload save file</Button>
+                    <ToggleButton x:Name="button3" Click="button3_Click">Toggle settlements</ToggleButton>
                 </StackPanel>
             </ScrollViewer>
         </Border>
