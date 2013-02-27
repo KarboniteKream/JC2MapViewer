@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:JC2MapViewer"
     xmlns:bruTileWindows="clr-namespace:BruTile.UI.Windows;assembly=BruTile"
-    Title="JC2MapViewer 0.3.1">
+    Title="JC2MapViewer 0.3.2">
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
@@ -42,9 +42,9 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <Button x:Name="button1" Click="button1_Click">Load save file</Button>
+                    <Button x:Name="reloadButton" Click="reload_Click">Reload</Button>
                     <TreeView x:Name="itemChooser" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemsSource="{Binding Mode=OneTime}" ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
                     <Button x:Name="button2" Click="button2_Click">Refresh</Button>
-                    <Button x:Name="reloadButton" Click="reload_Click">Reload save file</Button>
                     <ToggleButton x:Name="button3" Click="button3_Click">Toggle settlements</ToggleButton>
                 </StackPanel>
             </ScrollViewer>

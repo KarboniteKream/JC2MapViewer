@@ -1,4 +1,4 @@
-JC2MapViewer 0.3.1
+JC2MapViewer 0.3.2
 ==================
 
 About
