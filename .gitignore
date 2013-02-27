@@ -1,2 +1,6 @@
 # Thumbnails
 Thumbs.db
+[Oo]bj/
+[Bb]in/
+*.suo
+_ReSharper*/
