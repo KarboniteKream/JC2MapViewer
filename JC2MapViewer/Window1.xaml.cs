@@ -38,6 +38,7 @@ namespace JC2MapViewer
     {
         private SaveFile sf;
         private bool displaySettlements = false;
+        private string latestFileName;
 
         public Window1()
         {
@@ -278,8 +279,8 @@ namespace JC2MapViewer
                 Nullable<bool> result = dlg.ShowDialog();
                 if (result == true)
                 {
-                    string fileName = dlg.FileName;
-                    sf = new SaveFile(fileName);
+                    latestFileName = dlg.FileName;
+                    sf = new SaveFile( latestFileName );
                     loadSavedInfo();
                 }
             }
@@ -315,6 +316,15 @@ namespace JC2MapViewer
             {
                 loadSavedInfo();
             }
+        }
+        
+        private void reload_Click( object sender, RoutedEventArgs e )
+       	{
+         			if( !string.IsNullOrEmpty( latestFileName ) )
+         			{
+            				sf = new SaveFile( latestFileName );
+            				loadSavedInfo();
+         			}
         }
     }
 }
