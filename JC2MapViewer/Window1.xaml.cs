@@ -93,6 +93,8 @@ namespace JC2MapViewer
         {
             map.Transform.Center = new Point(16384d, -16384d);
             map.Transform.Resolution = schema.Resolutions.Last();
+            schema.Resolutions.Add( 2 );
+            schema.Resolutions.Add( 1 );
         }
 
         private void map_ErrorMessageChanged(object sender, EventArgs e)
