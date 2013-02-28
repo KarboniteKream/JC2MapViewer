@@ -36,4 +36,4 @@ License
 The source code of JC2MapViewer and BruTile is licensed under LGPL 2.1 (GNU Lesser General Public License), which means that you can freely redistribute and modify the program.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Copyright &copy; 2010 - 2012 DerPlaya78, Klemen "nNa" Košir, Peter "Zazcallabah" Hamberg
+Copyright &copy; 2010 - 2013 DerPlaya78, Klemen "nNa" Košir, Peter "Zazcallabah" Hamberg
