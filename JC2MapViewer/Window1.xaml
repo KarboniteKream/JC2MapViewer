@@ -1,4 +1,5 @@
 ﻿<Window x:Class="JC2MapViewer.Window1"
+		Name="MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:JC2MapViewer"
@@ -6,6 +7,7 @@
 		Title="JC2MapViewer 0.3.1">
 	<Window.Resources>
 		<ResourceDictionary>
+			<local:BoolToVisibilityConverter x:Key="visibilityConverter" />
 			<Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
 				<Setter Property="IsExpanded" Value="True" />
 				<Setter Property="IsSelected" Value="{Binding IsInitiallySelected, Mode=OneTime}" />
@@ -51,12 +53,12 @@
 			<ScrollViewer VerticalScrollBarVisibility="Auto">
 				<StackPanel>
 					<Button x:Name="loadButton" Click="LoadButton_Click">Load save file</Button>
+					<Button x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload save file</Button>
 					<TreeView x:Name="itemChooser"
 						ItemContainerStyle="{StaticResource TreeViewItemStyle}"
 						ItemsSource="{Binding Mode=OneTime}"
 						ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
 					<Button x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
-					<Button x:Name="reloadButton" Click="ReloadButton_Click">Reload save file</Button>
 					<ToggleButton x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle settlements</ToggleButton>
 				</StackPanel>
 			</ScrollViewer>
