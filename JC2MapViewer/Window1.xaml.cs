@@ -328,5 +328,17 @@ namespace JC2MapViewer
             				loadSavedInfo();
          			}
         }
+        
+        private void ZoomInButton_Click( object sender, RoutedEventArgs e )
+        {
+            map.Transform.Resolution /= 2;
+            map.Refresh();
+        }
+
+        private void ZoomOutButton_Click( object sender, RoutedEventArgs e )
+        {
+            map.Transform.Resolution *= 2;
+            map.Refresh();
+        }
     }
 }
