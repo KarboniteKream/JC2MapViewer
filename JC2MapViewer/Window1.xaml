@@ -42,7 +42,7 @@
 			VerticalAlignment="Stretch"
 			HorizontalAlignment="Stretch" />
 		<Border CornerRadius="8" 
-				Width="285"
+				Width="290"
 				VerticalAlignment="Top" 
 				HorizontalAlignment="Left"
 				Margin="8"
@@ -50,18 +50,32 @@
 				BorderThickness="2" 
 				BorderBrush="#ffffff" 
 				Padding="8">
-			<ScrollViewer VerticalScrollBarVisibility="Auto">
-				<StackPanel>
-					<Button x:Name="loadButton" Click="LoadButton_Click">Load save file</Button>
-					<Button x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload save file</Button>
-					<TreeView x:Name="itemChooser"
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Button Grid.ColumnSpan="2" x:Name="loadButton" Click="LoadButton_Click">Load save file</Button>
+				<Button Grid.Row="1" Grid.ColumnSpan="2" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload save file</Button>
+				<ScrollViewer Grid.Row="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+					<TreeView 
+						x:Name="itemChooser"
+						Height="Auto"
 						ItemContainerStyle="{StaticResource TreeViewItemStyle}"
 						ItemsSource="{Binding Mode=OneTime}"
 						ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
-					<Button x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
-					<ToggleButton x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle settlements</ToggleButton>
-				</StackPanel>
-			</ScrollViewer>
+				</ScrollViewer>
+				<Button Grid.Row="3" Grid.ColumnSpan="2" x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
+				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle settlements</ToggleButton>
+			</Grid>
 		</Border>
 		<Border x:Name="errorBorder" 
 				BorderBrush="White" 
