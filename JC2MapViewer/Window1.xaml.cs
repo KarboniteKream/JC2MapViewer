@@ -335,14 +335,20 @@ namespace JC2MapViewer
 
 		private void ZoomInButton_Click( object sender, RoutedEventArgs e )
 		{
-			map.Transform.Resolution /= 2;
-			map.Refresh();
+			if( map.Transform.Resolution > 0.125 )
+			{
+				map.Transform.Resolution /= 2;
+				map.Refresh();
+			}
 		}
 
 		private void ZoomOutButton_Click( object sender, RoutedEventArgs e )
 		{
-			map.Transform.Resolution *= 2;
-			map.Refresh();
+			if( map.Transform.Resolution < 512 )
+			{
+				map.Transform.Resolution *= 2;
+				map.Refresh();
+			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
