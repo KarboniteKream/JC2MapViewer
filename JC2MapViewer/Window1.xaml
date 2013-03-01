@@ -75,6 +75,8 @@
 				</ScrollViewer>
 				<Button Grid.Row="3" Grid.ColumnSpan="2" x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
 				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle settlements</ToggleButton>
+				<Button Grid.Row="5" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom in</Button>
+				<Button Grid.Row="5" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom out</Button>
 			</Grid>
 		</Border>
 		<Border x:Name="errorBorder" 
