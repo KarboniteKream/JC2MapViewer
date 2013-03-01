@@ -24,7 +24,9 @@ namespace JC2.Save
     public class SaveFile
     {
         public SaveFileHeader Header { get; private set; }
-        
+
+        public string FileName { get; private set; }
+
         const int CHUNK_HEADERS_OFFSET = 512;
         const int OFFSET_XBOX360 = 53248;
         const int CHUNK_DATA_OFFSET = 236032;
@@ -38,6 +40,7 @@ namespace JC2.Save
 
         public SaveFile(string fileName)
         {
+            FileName = fileName;
             Read(File.OpenRead(fileName));
         }
 
