@@ -17,6 +17,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -34,11 +35,10 @@ namespace JC2MapViewer
 	/// <summary>
 	/// Interaction logic for Window1.xaml
 	/// </summary>
-	public partial class Window1 : Window
+	public partial class Window1 : INotifyPropertyChanged
 	{
-		private SaveFile sf;
-		private bool displaySettlements;
-		private string latestFileName;
+		SaveFile _saveFile;
+		bool _displaySettlements;
 
 		public Window1()
 		{
@@ -180,7 +180,7 @@ namespace JC2MapViewer
 					list.Add( m );
 				}
 
-				if( displaySettlements )
+				if( _displaySettlements )
 				{
 					foreach( var s in settlements )
 					{
@@ -257,11 +257,11 @@ namespace JC2MapViewer
 
 			try
 			{
-				Dictionary<string, SavedSettlementInfo> settlements = sf.GetSettlementsInfo();
+				Dictionary<string, SavedSettlementInfo> settlements = _saveFile.GetSettlementsInfo();
 
 				Dictionary<string, int> counts;
 
-				loadMarkers( categories, map.RootLayer.MarkerCache, iconNames, map.MarkerImages, sf.GetSavedObjectInfo( out counts ), settlements );
+				loadMarkers( categories, map.RootLayer.MarkerCache, iconNames, map.MarkerImages, _saveFile.GetSavedObjectInfo( out counts ), settlements );
 				foreach( string c in counts.Keys )
 				{
 					root.UpdateCount( c, counts[c], SavedObjectInfoLookup.TotalCountByCategory[c] );
@@ -286,8 +286,8 @@ namespace JC2MapViewer
 				Nullable<bool> result = dlg.ShowDialog();
 				if( result == true )
 				{
-					latestFileName = dlg.FileName;
-					sf = new SaveFile( latestFileName );
+					_saveFile = new SaveFile( dlg.FileName );
+					FirePropertyChanged( "SaveFileIsLoaded" );
 					loadSavedInfo();
 				}
 			}
@@ -300,7 +300,7 @@ namespace JC2MapViewer
 
 		private void RefreshButton_Click( object sender, RoutedEventArgs e )
 		{
-			if( sf != null )
+			if( _saveFile != null )
 			{
 				loadSavedInfo();
 			}
@@ -311,14 +311,14 @@ namespace JC2MapViewer
 			System.Windows.Controls.Primitives.ToggleButton tb = sender as System.Windows.Controls.Primitives.ToggleButton;
 			if( tb.IsChecked.HasValue && tb.IsChecked.Value )
 			{
-				displaySettlements = true;
+				_displaySettlements = true;
 			}
 			else
 			{
-				displaySettlements = false;
+				_displaySettlements = false;
 			}
 
-			if( sf != null )
+			if( _saveFile != null )
 			{
 				loadSavedInfo();
 			}
@@ -326,9 +326,9 @@ namespace JC2MapViewer
 
 		private void ReloadButton_Click( object sender, RoutedEventArgs e )
 		{
-			if( !string.IsNullOrEmpty( latestFileName ) )
+			if( _saveFile != null )
 			{
-				sf = new SaveFile( latestFileName );
+				_saveFile = new SaveFile( _saveFile.FileName );
 				loadSavedInfo();
 			}
 		}
@@ -343,6 +343,22 @@ namespace JC2MapViewer
 		{
 			map.Transform.Resolution *= 2;
 			map.Refresh();
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+
+		public bool SaveFileIsLoaded
+		{
+			get { return _saveFile != null; }
+		}
+
+		void FirePropertyChanged( string property )
+		{
+			if( PropertyChanged != null )
+			{
+				PropertyChanged( this, new PropertyChangedEventArgs( property ) );
+			}
 		}
 	}
 }
