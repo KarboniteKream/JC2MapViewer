@@ -272,7 +272,7 @@ namespace JC2MapViewer
 
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -294,7 +294,7 @@ namespace JC2MapViewer
             }
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             if (sf != null)
             {
@@ -302,7 +302,7 @@ namespace JC2MapViewer
             }
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void ToggleSettlementsButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Primitives.ToggleButton tb = sender as System.Windows.Controls.Primitives.ToggleButton;
             if (tb.IsChecked.HasValue && tb.IsChecked.Value)
@@ -320,7 +320,7 @@ namespace JC2MapViewer
             }
         }
         
-        private void reload_Click( object sender, RoutedEventArgs e )
+        private void ReloadButton_Click( object sender, RoutedEventArgs e )
        	{
          			if( !string.IsNullOrEmpty( latestFileName ) )
          			{
