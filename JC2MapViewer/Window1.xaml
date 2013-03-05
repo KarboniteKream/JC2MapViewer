@@ -63,8 +63,8 @@
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
-				<Button Grid.ColumnSpan="2" x:Name="loadButton" Click="LoadButton_Click">Load save file</Button>
-				<Button Grid.Row="1" Grid.ColumnSpan="2" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload save file</Button>
+				<Button Grid.ColumnSpan="2" x:Name="loadButton" Click="LoadButton_Click">Load Save File</Button>
+				<Button Grid.Row="1" Grid.ColumnSpan="2" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload Save File</Button>
 				<ScrollViewer Grid.Row="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
 					<TreeView 
 						x:Name="itemChooser"
@@ -74,9 +74,9 @@
 						ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
 				</ScrollViewer>
 				<Button Grid.Row="3" Grid.ColumnSpan="2" x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
-				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle settlements</ToggleButton>
-				<Button Grid.Row="5" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom in</Button>
-				<Button Grid.Row="5" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom out</Button>
+				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle Settlements</ToggleButton>
+				<Button Grid.Row="5" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom In</Button>
+				<Button Grid.Row="5" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom Out</Button>
 			</Grid>
 		</Border>
 		<Border x:Name="errorBorder" 
