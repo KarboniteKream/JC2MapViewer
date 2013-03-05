@@ -1,59 +1,97 @@
 ﻿<Window x:Class="JC2MapViewer.Window1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:JC2MapViewer"
-    xmlns:bruTileWindows="clr-namespace:BruTile.UI.Windows;assembly=BruTile"
-    Title="JC2MapViewer 0.3.2">
-    <Window.Resources>
-        <ResourceDictionary>
-            <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
-                <Setter Property="IsExpanded" Value="True" />
-                <Setter Property="IsSelected" Value="{Binding IsInitiallySelected, Mode=OneTime}" />
-                <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True" />
-                <Setter Property="local:VirtualToggleButton.IsVirtualToggleButton" Value="True" />
-                <Setter Property="local:VirtualToggleButton.IsChecked" Value="{Binding IsChecked}" />
-            </Style>
-            <HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}">
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" />
-                    <TextBlock FontWeight="400" x:Name="Header">
-                        <ContentPresenter Content="{Binding Text}" Margin="2,0" />
-                    </TextBlock>
-                </StackPanel>
-                <HierarchicalDataTemplate.Triggers>
-                    <DataTrigger Binding="{Binding IsInComplete}" Value="True">
-                        <DataTrigger.Setters>
-                            <Setter Property="FontWeight" Value="700" TargetName="Header" />
-                        </DataTrigger.Setters>
-                    </DataTrigger>
-                </HierarchicalDataTemplate.Triggers>
-            </HierarchicalDataTemplate>
-        </ResourceDictionary>
-    </Window.Resources>
-    <Window.DataContext>
-        <ObjectDataProvider MethodName="CreateChooser" ObjectType="{x:Type local:ChooserViewModel}" />
-    </Window.DataContext>
+		Name="MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:JC2MapViewer"
+		xmlns:bruTileWindows="clr-namespace:BruTile.UI.Windows;assembly=BruTile"
+		Title="JC2MapViewer 0.3.3">
+	<Window.Resources>
+		<ResourceDictionary>
+			<local:BoolToVisibilityConverter x:Key="visibilityConverter" />
+			<Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
+				<Setter Property="IsExpanded" Value="True" />
+				<Setter Property="IsSelected" Value="{Binding IsInitiallySelected, Mode=OneTime}" />
+				<Setter Property="KeyboardNavigation.AcceptsReturn" Value="True" />
+				<Setter Property="local:VirtualToggleButton.IsVirtualToggleButton" Value="True" />
+				<Setter Property="local:VirtualToggleButton.IsChecked" Value="{Binding IsChecked}" />
+			</Style>
+			<HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}">
+				<StackPanel Orientation="Horizontal">
+					<CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" />
+					<TextBlock FontWeight="400" x:Name="Header">
+						<ContentPresenter Content="{Binding Text}" Margin="2,0" />
+					</TextBlock>
+				</StackPanel>
+				<HierarchicalDataTemplate.Triggers>
+					<DataTrigger Binding="{Binding IsInComplete}" Value="True">
+						<DataTrigger.Setters>
+							<Setter Property="FontWeight" Value="700" TargetName="Header" />
+						</DataTrigger.Setters>
+					</DataTrigger>
+				</HierarchicalDataTemplate.Triggers>
+			</HierarchicalDataTemplate>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.DataContext>
+		<ObjectDataProvider MethodName="CreateChooser" ObjectType="{x:Type local:ChooserViewModel}" />
+	</Window.DataContext>
 
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-        <bruTileWindows:MapControl x:Name="map" Background="#072530"
-            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        </bruTileWindows:MapControl>
-        <Border CornerRadius="8" Width="285" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8" Background="#7f000000" BorderThickness="2" BorderBrush="#ffffff" Padding="8">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <Button x:Name="button1" Click="button1_Click">Load Save File</Button>
-                    <Button x:Name="reloadButton" Click="reload_Click">Reload</Button>
-                    <TreeView x:Name="itemChooser" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemsSource="{Binding Mode=OneTime}" ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
-                    <Button x:Name="button2" Click="button2_Click">Refresh</Button>
-                    <ToggleButton x:Name="button3" Click="button3_Click">Toggle Settlements</ToggleButton>
-                </StackPanel>
-            </ScrollViewer>
-        </Border>
-        <Border x:Name="errorBorder" BorderBrush="White" Opacity="0" Margin="20" Background="White" BorderThickness="10" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock Text="Error:  "/>
-                <TextBlock x:Name="Error" Text="No Error"/>
-            </StackPanel>
-        </Border>
-    </Grid>
+	<Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+		<bruTileWindows:MapControl x:Name="map"
+			Background="#072530"
+			VerticalAlignment="Stretch"
+			HorizontalAlignment="Stretch" />
+		<Border CornerRadius="8" 
+				Width="290"
+				VerticalAlignment="Top" 
+				HorizontalAlignment="Left"
+				Margin="8"
+				Background="#7f000000"
+				BorderThickness="2" 
+				BorderBrush="#ffffff" 
+				Padding="8">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Button Grid.ColumnSpan="2" x:Name="loadButton" Click="LoadButton_Click">Load Save File</Button>
+				<Button Grid.Row="1" Grid.ColumnSpan="2" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload</Button>
+				<ScrollViewer Grid.Row="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+					<TreeView 
+						x:Name="itemChooser"
+						Height="Auto"
+						ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+						ItemsSource="{Binding Mode=OneTime}"
+						ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
+				</ScrollViewer>
+				<Button Grid.Row="3" Grid.ColumnSpan="2" x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
+				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle Settlements</ToggleButton>
+				<Button Grid.Row="5" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom In</Button>
+				<Button Grid.Row="5" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom Out</Button>
+			</Grid>
+		</Border>
+		<Border x:Name="errorBorder" 
+				BorderBrush="White" 
+				Opacity="0"
+				Margin="20"
+				Background="White"
+				BorderThickness="10"
+				CornerRadius="5"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Right">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Error:  " />
+				<TextBlock x:Name="Error" Text="No Error" />
+			</StackPanel>
+		</Border>
+	</Grid>
 </Window>
