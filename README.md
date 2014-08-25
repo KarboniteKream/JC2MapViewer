@@ -1,4 +1,4 @@
-JC2MapViewer 0.3.3
+JC2MapViewer 0.3.4
 ==================
 
 About
@@ -24,6 +24,16 @@ System Requirements
 -------------------
 This program works on Windows XP or newer, and the only requirement is the installation of Microsoft .NET Framework 3.5 Redistributable.
 
+Changelog
+---------
+- 0.3.4: Added an option to automatically reload the map.
+- 0.3.3: Added taskbar icon, new zoom buttons.
+- 0.3.2: Added Reload button and scrollbars for smaller screens.
+- 0.3.1: Fixed some minor bugs and typos, minor GUI overhaul.
+- 0.3: Added experimental support for Xbox 360 save games.
+- 0.2: Added settlement information.
+- 0.1a: Updated item lists.
+
 Xbox 360 Support
 ----------------
 Xbox 360 is experimental, so 100% compatibility can't be guaranteed. PC and Xbox 360 files should be almost identical; the only difference is that the Xbox 360 save files
@@ -36,4 +46,4 @@ License
 The source code of JC2MapViewer and BruTile is licensed under LGPL 2.1 (GNU Lesser General Public License), which means that you can freely redistribute and modify the program.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Copyright &copy; 2010 - 2013 DerPlaya78, Klemen "nNa" Košir, Peter "Zazcallabah" Hamberg
+Copyright &copy; 2010 - 2014 DerPlaya78, Klemen "nNa" Košir, Peter "Zazcallabah" Hamberg

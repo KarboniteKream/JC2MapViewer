@@ -1,7 +1,7 @@
 ﻿/*
  JC2MapViewer
  Copyright 2010 - DerPlaya78
- 
+
  this program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -21,9 +21,11 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using BruTile;
 using BruTile.Cache;
 using BruTile.UI;
@@ -39,9 +41,12 @@ namespace JC2MapViewer
 	{
 		SaveFile _saveFile;
 		bool _displaySettlements;
+		DispatcherTimer _dispatcherTimer = new DispatcherTimer();
 
 		public Window1()
 		{
+			_dispatcherTimer.Tick += new EventHandler(_dispatcherTimer_Tick);
+
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
 			InitializeComponent();
@@ -82,6 +87,11 @@ namespace JC2MapViewer
 		void Window1_Loaded( object sender, RoutedEventArgs e )
 		{
 			map.Refresh();
+		}
+
+		private void _dispatcherTimer_Tick(object sender, EventArgs e)
+		{
+			ReloadButton_Click(sender, null);
 		}
 
 		void CurrentDomain_UnhandledException( object sender, UnhandledExceptionEventArgs e )
@@ -364,6 +374,36 @@ namespace JC2MapViewer
 			if( PropertyChanged != null )
 			{
 				PropertyChanged( this, new PropertyChangedEventArgs( property ) );
+			}
+		}
+
+		private void reloadInterval_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			switch(reloadInterval.SelectedIndex)
+			{
+				case 0:
+					_dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+					_dispatcherTimer.Start();
+				break;
+
+				case 1:
+					_dispatcherTimer.Interval = new TimeSpan(0, 5, 0);
+					_dispatcherTimer.Start();
+				break;
+
+				case 2:
+					_dispatcherTimer.Interval = new TimeSpan(0, 10, 0);
+					_dispatcherTimer.Start();
+				break;
+
+				case 3:
+					_dispatcherTimer.Interval = new TimeSpan(0, 15, 0);
+					_dispatcherTimer.Start();
+				break;
+
+				case 4:
+					_dispatcherTimer.Stop();
+				break;
 			}
 		}
 	}
