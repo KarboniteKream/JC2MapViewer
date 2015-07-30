@@ -67,10 +67,11 @@
 				<Button Grid.Row="1" Grid.ColumnSpan="1" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload</Button>
 				<ComboBox Grid.Row="1" Grid.Column="1" x:Name="reloadInterval" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}" SelectionChanged="reloadInterval_SelectionChanged" >
 					<ComboBoxItem Content="Every minute"/>
-					<ComboBoxItem Content="Every 5 minutes" IsSelected="True"/>
+					<ComboBoxItem Content="Every 5 minutes"/>
 					<ComboBoxItem Content="Every 10 minutes"/>
 					<ComboBoxItem Content="Every 15 minutes"/>
 					<ComboBoxItem Content="Never"/>
+					<ComboBoxItem Content="Every save" IsSelected="True"/>
 				</ComboBox>
 				<ScrollViewer Grid.Row="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
 					<TreeView
