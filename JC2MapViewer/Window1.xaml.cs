@@ -1,4 +1,4 @@
-﻿/*
+/*
  JC2MapViewer
  Copyright 2010 - DerPlaya78
 
@@ -314,7 +314,7 @@ namespace JC2MapViewer
 				{
 					_saveFile = new SaveFile( dlg.FileName );
 					_fileSystemWatcher.Path = Path.GetDirectoryName(_saveFile.FileName);
-					if (reloadInterval.SelectedIndex == 5)
+					if (reloadInterval.SelectedIndex == 0)
 					{
 						_fileSystemWatcher.EnableRaisingEvents = true;
 					}
@@ -400,31 +400,31 @@ namespace JC2MapViewer
 
 		private void reloadInterval_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			_fileSystemWatcher.EnableRaisingEvents = reloadInterval.SelectedIndex == 5 && SaveFileIsLoaded;
+			_fileSystemWatcher.EnableRaisingEvents = reloadInterval.SelectedIndex == 0 && SaveFileIsLoaded;
 
 			switch(reloadInterval.SelectedIndex)
 			{
-				case 0:
+				case 1:
 					_dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
 					_dispatcherTimer.Start();
 				break;
 
-				case 1:
+				case 2:
 					_dispatcherTimer.Interval = new TimeSpan(0, 5, 0);
 					_dispatcherTimer.Start();
 				break;
 
-				case 2:
+				case 3:
 					_dispatcherTimer.Interval = new TimeSpan(0, 10, 0);
 					_dispatcherTimer.Start();
 				break;
 
-				case 3:
+				case 4:
 					_dispatcherTimer.Interval = new TimeSpan(0, 15, 0);
 					_dispatcherTimer.Start();
 				break;
 
-				case 4:
+				case 5:
 					_dispatcherTimer.Stop();
 				break;
 			}
