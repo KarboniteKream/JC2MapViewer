@@ -42,6 +42,7 @@ namespace JC2MapViewer
 		SaveFile _saveFile;
 		bool _displaySettlements;
 		DispatcherTimer _dispatcherTimer = new DispatcherTimer();
+		FileSystemWatcher _fileSystemWatcher = new FileSystemWatcher() { NotifyFilter = NotifyFilters.LastWrite, Filter = "*.sav" };
 
 		public Window1()
 		{
@@ -81,7 +82,22 @@ namespace JC2MapViewer
 
 			map.RootLayer = new TileLayer( tileSource );
 
+			_fileSystemWatcher.Changed += fileSystemWatcher_Changed;
+
 			InitializeTransform( tileSource.Schema );
+		}
+
+		private void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+		{
+			try
+			{
+				_saveFile = new SaveFile(e.FullPath);
+				Dispatcher.Invoke(new Action(loadSavedInfo));
+			}
+			catch (IOException)
+			{
+				// the game is still updating the save file
+			}
 		}
 
 		void Window1_Loaded( object sender, RoutedEventArgs e )
@@ -297,6 +313,11 @@ namespace JC2MapViewer
 				if( result == true )
 				{
 					_saveFile = new SaveFile( dlg.FileName );
+					_fileSystemWatcher.Path = Path.GetDirectoryName(_saveFile.FileName);
+					if (reloadInterval.SelectedIndex == 5)
+					{
+						_fileSystemWatcher.EnableRaisingEvents = true;
+					}
 					FirePropertyChanged( "SaveFileIsLoaded" );
 					loadSavedInfo();
 				}
@@ -379,6 +400,8 @@ namespace JC2MapViewer
 
 		private void reloadInterval_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			_fileSystemWatcher.EnableRaisingEvents = reloadInterval.SelectedIndex == 5 && SaveFileIsLoaded;
+
 			switch(reloadInterval.SelectedIndex)
 			{
 				case 0:
