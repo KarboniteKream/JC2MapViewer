@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -43,6 +44,7 @@ namespace JC2MapViewer
 		bool _displaySettlements;
 		DispatcherTimer _dispatcherTimer = new DispatcherTimer();
 		FileSystemWatcher _fileSystemWatcher = new FileSystemWatcher() { NotifyFilter = NotifyFilters.LastWrite, Filter = "*.sav" };
+        ManualResetEvent _refreshRequested = new ManualResetEvent(false);
 
 		public Window1()
 		{
@@ -272,7 +274,7 @@ namespace JC2MapViewer
 
 		private void loadSavedInfo()
 		{
-			ChooserViewModel root = itemChooser.Items[0] as ChooserViewModel;
+            ChooserViewModel root = itemChooser.Items[0] as ChooserViewModel;
 			List<string> categories = root.GetSelectedCategories();
 
 			map.ClearMarkers();
@@ -330,12 +332,36 @@ namespace JC2MapViewer
 		}
 
 		private void CheckBoxItem_Toggled( object sender, RoutedEventArgs e )
-		{
-			if( _saveFile != null )
-			{
-				loadSavedInfo();
-			}
+        {
+            // Because multiple checkboxes might be toggled at the same time,
+            // we request a refresh then attempt to perform it, if necessary.
+		    _refreshRequested.Set();
+		    ThreadPool.QueueUserWorkItem(RefreshIfNecessary);
 		}
+
+        /// <summary>
+        /// Refreshes the map if a request is currently pending
+        /// </summary>
+        private void RefreshIfNecessary(object state) {
+            lock (this)
+            {
+                if (!_refreshRequested.WaitOne(0))
+                {
+                    // Refresh not necessary
+                    return;
+                }
+
+                if (_saveFile != null)
+                {
+                    // Perform the refresh on the UI thread, so that we can update the map
+                    Action loadAction = loadSavedInfo;
+                    Dispatcher.Invoke(DispatcherPriority.Normal, loadAction);
+                }
+
+                // Clear the request
+                _refreshRequested.Reset();
+            }
+        }
 
 		private void ToggleSettlementsButton_Click( object sender, RoutedEventArgs e )
 		{
