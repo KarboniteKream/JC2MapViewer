@@ -17,7 +17,7 @@
 			</Style>
 			<HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}">
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" />
+					<CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" Checked="CheckBoxItem_Toggled" Unchecked="CheckBoxItem_Toggled" />
 					<TextBlock FontWeight="400" x:Name="Header">
 						<ContentPresenter Content="{Binding Text}" Margin="2,0" />
 					</TextBlock>
@@ -61,7 +61,6 @@
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 				<Button Grid.ColumnSpan="2" x:Name="loadButton" Click="LoadButton_Click">Load Save File</Button>
 				<Button Grid.Row="1" Grid.ColumnSpan="1" x:Name="reloadButton" Click="ReloadButton_Click" Visibility="{Binding ElementName=MainWindow, Path=SaveFileIsLoaded, Converter={StaticResource visibilityConverter}}">Reload</Button>
@@ -81,10 +80,9 @@
 						ItemsSource="{Binding Mode=OneTime}"
 						ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
 				</ScrollViewer>
-				<Button Grid.Row="3" Grid.ColumnSpan="2" x:Name="refreshButton" Click="RefreshButton_Click">Refresh</Button>
-				<ToggleButton Grid.Row="4" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle Settlements</ToggleButton>
-				<Button Grid.Row="5" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom In</Button>
-				<Button Grid.Row="5" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom Out</Button>
+				<ToggleButton Grid.Row="3" Grid.ColumnSpan="2" x:Name="toggleSettlementsButton" Click="ToggleSettlementsButton_Click">Toggle Settlements</ToggleButton>
+				<Button Grid.Row="4" x:Name="zoomInButton" Click="ZoomInButton_Click">Zoom In</Button>
+				<Button Grid.Row="4" Grid.Column="1" x:Name="zoomOutButton" Click="ZoomOutButton_Click">Zoom Out</Button>
 			</Grid>
 		</Border>
 		<Border x:Name="errorBorder"

@@ -329,7 +329,7 @@ namespace JC2MapViewer
 			}
 		}
 
-		private void RefreshButton_Click( object sender, RoutedEventArgs e )
+		private void CheckBoxItem_Toggled( object sender, RoutedEventArgs e )
 		{
 			if( _saveFile != null )
 			{
