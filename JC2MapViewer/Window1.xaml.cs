@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -89,14 +90,19 @@ namespace JC2MapViewer
 
 		private void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
 		{
-			try
+			for (int i = 0; i < 5; i++)
 			{
-				_saveFile = new SaveFile(e.FullPath);
-				Dispatcher.Invoke(new Action(loadSavedInfo));
-			}
-			catch (IOException)
-			{
-				// the game is still updating the save file
+				try
+				{
+					_saveFile = new SaveFile(e.FullPath);
+					Dispatcher.Invoke(new Action(loadSavedInfo));
+					return;
+				}
+				catch (IOException)
+				{
+					// the game is still updating the save file
+					Thread.Sleep(TimeSpan.FromSeconds(i + 1));
+				}
 			}
 		}
 
