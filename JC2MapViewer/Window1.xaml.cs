@@ -32,6 +32,7 @@ using BruTile.Cache;
 using BruTile.UI;
 using BruTile.UI.Windows;
 using JC2.Save;
+using Microsoft.Win32;
 
 namespace JC2MapViewer
 {
@@ -314,7 +315,8 @@ namespace JC2MapViewer
 		{
 			try
 			{
-				Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+				OpenFileDialog dlg = new OpenFileDialog();
+				dlg.InitialDirectory = GetJC2SaveFolderPath() ?? "";
 				dlg.Filter = "Just Cause 2 Save (.sav)|*.sav";
 				Nullable<bool> result = dlg.ShowDialog();
 				if( result == true )
@@ -336,6 +338,51 @@ namespace JC2MapViewer
 			}
 		}
 
+		/// <summary>
+		/// Determines the location of Just Cause 2 save files for the first Steam user on this computer.
+		/// If there are multiple Steam users that play Just Cause 2, only the first folder will be returned.
+		/// </summary>
+		/// <returns>The Steam Cloud folder for Just Cause 2, or null, if it was not located</returns>
+		private static string GetJC2SaveFolderPath()
+		{
+			try
+			{
+				// Find where Steam is installed. 64 bit versions of Windows will redirect it to the Wow6432Node location
+				string installPath32 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", null) as string;
+				string installPath64 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath", null) as string;
+				string installPath = installPath32 ?? installPath64;
+				if (installPath == null)
+				{
+					return null;
+				}
+
+				// Find the Steam user data folder
+				string userDataPath = Path.Combine(installPath, "userdata");
+				var userData = new DirectoryInfo(userDataPath);
+
+				// Find the different Steam users accounts
+				foreach (DirectoryInfo userFolder in userData.GetDirectories())
+				{
+					// Check if this Steam user has Just Cause 2 data
+					DirectoryInfo jc2DataFolder = userFolder.GetDirectories("8190").FirstOrDefault();
+					if (jc2DataFolder != null)
+					{
+						// Find the Steam Cloud folder, which stores the save games
+						DirectoryInfo steamCloudFolder = jc2DataFolder.GetDirectories("remote").FirstOrDefault();
+						if (steamCloudFolder != null)
+						{
+							return steamCloudFolder.FullName;
+						}
+					}
+				}
+			}
+			catch
+			{
+				// Unable to determine location automatically
+			}
+			return null;
+		}
+
 		private void CheckBoxItem_Toggled( object sender, RoutedEventArgs e )
 		{
 			// Because multiple checkboxes might be toggled at the same time,
@@ -347,7 +394,8 @@ namespace JC2MapViewer
 		/// <summary>
 		/// Refreshes the map if a request is currently pending
 		/// </summary>
-		private void RefreshIfNecessary(object state) {
+		private void RefreshIfNecessary(object state)
+		{
 			lock (this)
 			{
 				if (!_refreshRequested.WaitOne(0))
