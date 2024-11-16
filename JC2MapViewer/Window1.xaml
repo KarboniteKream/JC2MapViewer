@@ -4,7 +4,7 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:JC2MapViewer"
 		xmlns:bruTileWindows="clr-namespace:BruTile.UI.Windows;assembly=BruTile"
-		Title="JC2MapViewer 0.3.4">
+		Title="JC2MapViewer 0.3.5">
 	<Window.Resources>
 		<ResourceDictionary>
 			<local:BoolToVisibilityConverter x:Key="visibilityConverter" />

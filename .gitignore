@@ -4,3 +4,4 @@ Thumbs.db
 [Bb]in/
 *.suo
 _ReSharper*/
+.vs/
