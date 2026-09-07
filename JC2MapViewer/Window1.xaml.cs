@@ -51,8 +51,6 @@ namespace JC2MapViewer
 		{
 			_dispatcherTimer.Tick += new EventHandler(_dispatcherTimer_Tick);
 
-			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
 			InitializeComponent();
 			map.ErrorMessageChanged += map_ErrorMessageChanged;
 			Loaded += Window1_Loaded;
@@ -116,11 +114,6 @@ namespace JC2MapViewer
 		private void _dispatcherTimer_Tick(object sender, EventArgs e)
 		{
 			ReloadButton_Click(sender, null);
-		}
-
-		void CurrentDomain_UnhandledException( object sender, UnhandledExceptionEventArgs e )
-		{
-			MessageBox.Show( "An unhandled exception occurred, the application will shut down", "Fatal Error", MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 
 		private void InitializeTransform( TileSchema schema )

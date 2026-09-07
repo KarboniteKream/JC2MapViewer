@@ -116,6 +116,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\JC2Save\JC2.Save.csproj">
       <Project>{1C95521B-4205-42A8-9822-D0638BC2C25A}</Project>
       <Name>JC2.Save</Name>
