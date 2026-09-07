@@ -5,8 +5,8 @@ JC2MapViewer is a map viewer for Just Cause 2, written in C#. It loads a Just Ca
 
 The source code of 0.3 was written using Visual Studio 2008 and was migrated to Visual Studio 2012, starting with 0.3.1.
 
-This program was originally written by DerPlaya78 using BruTile as the tiling library. Since the development stopped in 2010 with 0.3 as the final version,
-bugs remained and some have been fixed in this version. The JC2.Save library contains some additional information about Just Cause 2 save games (statistics, mission
+This program was originally written by DerPlaya78 using `BruTile` as the tiling library. Since the development stopped in 2010 with 0.3 as the final version,
+bugs remained and some have been fixed in this version. The `JC2.Save` library contains some additional information about Just Cause 2 save games (statistics, mission
 state, etc.), that is not used by the viewer, so anyone interested can use it in their programs.
 
 ## Instructions
@@ -19,9 +19,10 @@ Some hints:
 - Use mouse wheel to zoom, or hold Ctrl to zoom to a specific part.
 
 ## System Requirements
-This program works on Windows XP or newer, and the only requirement is the installation of Microsoft .NET Framework 3.5 Redistributable.
+This program works on Windows XP or newer, and the only requirement is the installation of Microsoft .NET Framework 3.5 or 4.0.
 
 ## Changelog
+- 0.3.6: Compatibility with .NET Framework 4.0 and better exception reporting.
 - 0.3.5: Improved save game detection and map reloading.
 - 0.3.4: Added an option to automatically reload the map.
 - 0.3.3: Added taskbar icon, new zoom buttons.
